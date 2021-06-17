@@ -168,6 +168,8 @@ def fit_enet(p, variants, covariates, weights, continuous, alpha, lineage_dict =
         regression_type = 'binomial'
         ptype = 'class'
 
+    sys.stderr.write("USING MY VERSION OF PYSEER")
+
     if covariates.shape[0] > 0:
         variants = hstack([csc_matrix(covariates.values), variants])
 
