@@ -8,8 +8,8 @@ import os
 import tempfile
 from math import log10
 
-from .bwa import bwa_index
-from .bwa import bwa_iter
+from pyseer.bwa import bwa_index
+from pyseer.bwa import bwa_iter
 
 def get_options():
     import argparse

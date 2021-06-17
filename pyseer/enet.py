@@ -6,7 +6,7 @@
 import os
 import pickle
 import sys
-from .utils import set_env
+from pyseer.utils import set_env
 # avoid numpy taking up more than one thread
 with set_env(MKL_NUM_THREADS='1',
              NUMEXPR_NUM_THREADS='1',
@@ -25,10 +25,10 @@ from cvglmnetCoef import cvglmnetCoef
 from cvglmnetPredict import cvglmnetPredict
 
 import pyseer.classes as var_obj
-from .input import read_variant
-from .model import pre_filtering
-from .model import fit_lineage_effect
-from .model import fixed_effects_regression
+from pyseer.input import read_variant
+from pyseer.model import pre_filtering
+from pyseer.model import fit_lineage_effect
+from pyseer.model import fixed_effects_regression
 
 # Loads all variants into memory for use with elastic net
 def load_all_vars(var_type, p, burden, burden_regions, infile,

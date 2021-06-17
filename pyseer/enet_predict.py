@@ -4,7 +4,7 @@
 
 import os
 import sys
-from .utils import set_env
+from pyseer.utils import set_env
 from collections import deque
 # avoid numpy taking up more than one thread
 with set_env(MKL_NUM_THREADS='1',
@@ -16,13 +16,13 @@ import pandas as pd
 from scipy.special import expit
 from tqdm import tqdm
 
-from .input import open_variant_file
-from .input import load_covariates
-from .input import read_variant
-from .input import load_lineage
-from .input import load_phenotypes
+from pyseer.input import open_variant_file
+from pyseer.input import load_covariates
+from pyseer.input import read_variant
+from pyseer.input import load_lineage
+from pyseer.input import load_phenotypes
 
-from .enet import write_lineage_predictions
+from pyseer.enet import write_lineage_predictions
 
 def get_options():
     import argparse

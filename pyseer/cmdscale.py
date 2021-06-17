@@ -2,7 +2,7 @@
 
 '''Function to perform classical MDS'''
 
-from .utils import set_env
+from pyseer.utils import set_env
 # avoid numpy taking up more than one thread
 with set_env(MKL_NUM_THREADS='1',
              NUMEXPR_NUM_THREADS='1',

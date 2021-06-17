@@ -5,7 +5,7 @@
 
 import os
 import sys
-from .utils import set_env
+from pyseer.utils import set_env
 # avoid numpy taking up more than one thread
 with set_env(MKL_NUM_THREADS='1',
              NUMEXPR_NUM_THREADS='1',
@@ -17,10 +17,10 @@ from scipy import stats
 import statsmodels.formula.api as smf
 
 import pyseer.classes as var_obj
-from .fastlmm.lmm_cov import LMM as lmm_cov
+from pyseer.fastlmm.lmm_cov import LMM as lmm_cov
 
-from .model import pre_filtering
-from .model import fit_lineage_effect
+from pyseer.model import pre_filtering
+from pyseer.model import fit_lineage_effect
 
 
 def initialise_lmm(p, cov, K_in, lmm_cache_in=None, lmm_cache_out=None, lineage_samples=None):

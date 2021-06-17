@@ -9,9 +9,9 @@ import numpy as np
 import pandas as pd
 from pysam import VariantFile
 
-from .__init__ import __version__
+from pyseer.__init__ import __version__
 
-from .input import load_var_block
+from pyseer.input import load_var_block
 
 block_size = 1000
 

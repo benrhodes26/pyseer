@@ -2,7 +2,7 @@
 
 '''Draw a scree plot'''
 
-from .cmdscale import cmdscale
+from pyseer.cmdscale import cmdscale
 
 
 def get_options():

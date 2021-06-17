@@ -11,7 +11,7 @@ import re
 import pickle
 from collections import deque
 from decimal import Decimal
-from .utils import set_env
+from pyseer.utils import set_env
 # avoid numpy taking up more than one thread
 with set_env(MKL_NUM_THREADS='1',
              NUMEXPR_NUM_THREADS='1',
@@ -23,33 +23,33 @@ import pandas as pd
 from sklearn import manifold
 from multiprocessing import Pool
 
-from .__init__ import __version__
+from pyseer.__init__ import __version__
 
-from .input import load_phenotypes
-from .input import load_structure
-from .input import load_lineage
-from .input import load_covariates
-from .input import load_burden
-from .input import open_variant_file
-from .input import iter_variants
-from .input import load_var_block
-from .input import iter_variants_lmm
-from .input import file_hash
+from pyseer.input import load_phenotypes
+from pyseer.input import load_structure
+from pyseer.input import load_lineage
+from pyseer.input import load_covariates
+from pyseer.input import load_burden
+from pyseer.input import open_variant_file
+from pyseer.input import iter_variants
+from pyseer.input import load_var_block
+from pyseer.input import iter_variants_lmm
+from pyseer.input import file_hash
 
-from .model import fixed_effects_regression
-from .model import fit_null
+from pyseer.model import fixed_effects_regression
+from pyseer.model import fit_null
 
-from .lmm import initialise_lmm
-from .lmm import fit_lmm
+from pyseer.lmm import initialise_lmm
+from pyseer.lmm import fit_lmm
 
-from .enet import load_all_vars
-from .enet import fit_enet
-from .enet import correlation_filter
-from .enet import find_enet_selected
+from pyseer.enet import load_all_vars
+from pyseer.enet import fit_enet
+from pyseer.enet import correlation_filter
+from pyseer.enet import find_enet_selected
 
-from .rf import fit_rf
+from pyseer.rf import fit_rf
 
-from .utils import format_output
+from pyseer.utils import format_output
 
 
 def get_options():

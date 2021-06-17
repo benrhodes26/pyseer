@@ -6,7 +6,7 @@ import os
 import sys
 import pandas as pd
 
-from .__init__ import __version__
+from pyseer.__init__ import __version__
 
 
 def get_options():

@@ -3,7 +3,7 @@
 '''Functions to read data into pyseer and iterate over instances'''
 
 import sys
-from .utils import set_env
+from pyseer.utils import set_env
 import re
 import gzip
 # avoid numpy taking up more than one thread
@@ -18,7 +18,7 @@ import hashlib
 import binascii
 
 import pyseer.classes as var_obj
-from .cmdscale import cmdscale
+from pyseer.cmdscale import cmdscale
 
 
 def load_phenotypes(infile, column):

@@ -10,8 +10,8 @@ import numpy.linalg as la
 import scipy.optimize as opt
 import scipy.stats as st
 import scipy.special as ss
-from .mingrid import *
-from .util import *
+from pyseer.mingrid import *
+from pyseer.util import *
 import time
 
 
