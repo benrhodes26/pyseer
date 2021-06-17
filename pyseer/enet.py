@@ -4,6 +4,7 @@
 '''Elastic net model implementations'''
 
 import os
+import pickle
 import sys
 from .utils import set_env
 # avoid numpy taking up more than one thread
@@ -117,8 +118,8 @@ def load_all_vars(var_type, p, burden, burden_regions, infile,
                           shape=(len(selected_vars), len(all_strains)))
     return(variants, selected_vars, var_idx)
 
-def fit_enet(p, variants, covariates, weights, continuous, alpha,
-             lineage_dict = None, fold_ids = None, n_folds = 10, n_cpus = 1):
+def fit_enet(p, variants, covariates, weights, continuous, alpha, lineage_dict = None,
+             fold_ids = None, n_folds = 10, n_cpus = 1, save_path=None):
     """Fit an elastic net model to a set of variants. Prints
     information about model fit and prediction quality to STDERR
 
@@ -162,19 +163,26 @@ def fit_enet(p, variants, covariates, weights, continuous, alpha,
     """
     if continuous:
         regression_type = 'gaussian'
+        ptype = 'deviance'
     else:
         regression_type = 'binomial'
+        ptype = 'class'
 
     if covariates.shape[0] > 0:
         variants = hstack([csc_matrix(covariates.values), variants])
 
     # Run model fit
     if fold_ids is None:
-        enet_fit = cvglmnet(x = variants, y = p.values.astype('float64'), family = regression_type,
+        enet_fit = cvglmnet(x = variants, y = p.values.astype('float64'), family = regression_type, ptype = ptype,
                             nfolds = n_folds, alpha = alpha, parallel = n_cpus, weights = weights)
     else:
-        enet_fit = cvglmnet(x = variants, y = p.values.astype('float64'), family = regression_type,
+        enet_fit = cvglmnet(x = variants, y = p.values.astype('float64'), family = regression_type, ptype = ptype,
                             foldid = fold_ids, alpha = alpha, parallel = n_cpus, weights = weights)
+
+    # pickle enet_fit dictionary
+    if save_path:
+        with open(save_path + "_cvglmnet_dict.pkl", "wb") as f:
+            pickle.dump(enet_fit, f)
 
     # Extract best lambda and predict class labels/values
     betas = cvglmnetCoef(enet_fit, s = 'lambda_min')

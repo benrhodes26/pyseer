@@ -651,7 +651,7 @@ def main():
             enet_betas = fit_enet(p, all_vars, cov, weights,
                                   options.continuous, options.alpha,
                                   lineage_dict_full, fold_ids, options.n_folds,
-                                  options.cpu)
+                                  options.cpu, options.save_model)
 
             # print those with passing indices, along with coefficient
             sys.stderr.write("Finding and printing selected variants\n")
